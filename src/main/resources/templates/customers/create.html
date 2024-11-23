@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Customer</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(135deg, #d2b48c, #f5deb3);
+            color: #333;
+        }
+        form {
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: white;
+            width: 300px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #800000, #b22222);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #b22222, #ff6347);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #800000, #b22222);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #b22222, #ff6347);
+        }
+    </style>
+</head>
+<body>
+<h1>Добавить нового клиента</h1>
+
+<div id="successNotification" th:if="${successMessage}" style="background-color: #d4edda; border: 2px solid #c3e6cb; border-radius: 5px; padding: 10px; width: 300px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); margin: 0 auto; opacity: 1; transition: opacity 1s ease;">
+    <p th:text="${successMessage}" style="color: #0b3d0b; font-weight: bold; margin: 0;"></p>
+</div>
+
+<script>
+    const notification = document.getElementById('successNotification');
+    if (notification) {
+        setTimeout(() => {
+            notification.style.opacity = '0';
+        }, 3000);
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 4000);
+    }
+</script>
+
+<form th:action="@{/customers}" th:object="${customer}" method="post">
+    <label for="firstName">Имя:</label>
+    <input type="text" id="firstName" th:field="*{firstName}" required/>
+    <div th:if="${#fields.hasErrors('firstName')}" style="color:red;" th:errors="*{firstName}"></div>
+    <br/>
+
+    <label for="lastName">Фамилия:</label>
+    <input type="text" id="lastName" th:field="*{lastName}" required/>
+    <div th:if="${#fields.hasErrors('lastName')}" style="color:red;" th:errors="*{lastName}"></div>
+    <br/>
+
+    <label for="phone">Телефон:</label>
+    <input type="text" id="phone" th:field="*{phone}" required
+           pattern="^\+7-\d{3}-\d{3}-\d{2}-\d{2}$"
+           placeholder="+7-000-000-00-00"/>
+    <div th:if="${#fields.hasErrors('phone')}" style="color:red;" th:errors="*{phone}"></div>
+    <br/>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" th:field="*{email}" required/>
+    <div th:if="${#fields.hasErrors('email')}" style="color:red;" th:errors="*{email}"></div>
+    <br/>
+
+    <label for="showroom">Автосалон:</label>
+    <select id="showroom" th:field="*{showroom.id}" required>
+        <option th:each="showroom : ${showrooms}"
+                th:value="${showroom.id}"
+                th:text="${showroom.name}"></option>
+    </select>
+    <br/>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<a href="/customers" class="button">Вернуться к списку клиентов</a>
+</body>
+</html>

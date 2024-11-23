@@ -1,0 +1,9 @@
+.success-message {
+    background-color: #d4edda; /* Мягко-зеленый цвет фона */
+    border: 1px solid #c3e6cb; /* Цвет бордюра */
+    border-radius: 5px; /* Закругленные углы */
+    padding: 15px; /* Отступы внутри блока */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень для объема */
+    color: #155724; /* Цвет текста */
+    margin: 10px 0; /* Отступ сверху и снизу */
+}

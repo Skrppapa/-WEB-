@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to the Car Showroom</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background: linear-gradient(135deg, #d2b48c, #f5deb3); /* Темный бежевый градиент */
+            color: #333;
+        }
+        h1 {
+            background: linear-gradient(90deg, #FF5733, #FFC300);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-family: 'Georgia', serif;
+            font-size: 24px;
+            color: #4A4A4A; /* Цвет текста для читаемости */
+            margin: 20px 0;
+        }
+        a {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            font-size: 20px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #800000, #b22222); /* Бордовый градиент */
+            border: 2px solid #a0522d; /* Светлый бордюр для выделения */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Объемный эффект */
+            transition: background-color 0.3s, transform 0.3s, border-color 0.3s;
+        }
+        a:hover {
+            background: linear-gradient(135deg, #b22222, #ff6347); /* Более светлый градиент при наведении */
+            border-color: #cd5c5c; /* Более светлый бордюр при наведении */
+            transform: translateY(-2px);
+        }
+        a:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+<h1>Добро пожаловать в управление продажами автосалона</h1>
+<p style="font-weight: bold; font-family: 'Comic Sans MS', cursive;">Доступные действия:</p>
+<a href="/showrooms">Автосалоны</a>
+<a href="/cars">Автомобили</a>
+<a href="/sellers">Менеджеры по продажам</a>
+<a href="/customers">Покупатели</a>
+<a href="/sales">Продажи</a>
+</body>
+</html>
